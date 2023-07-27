@@ -1,0 +1,1127 @@
+version: 2
+sources:
+- name: staging
+  database: dmn01-rsksoi-bld-01-2017
+  schema: dmn01_rsksoi_euwe2_rsk_csp_ds_curation
+  tables:
+  - name: rskcsp_ds_cardholder_curated
+    columns:
+    - name: CCS_Email__c
+      tests:
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Facility_ID__c
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_First_Name__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Is_Card_Needed__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Last_Name__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Level_of_Control__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Mobile_Number__c
+      tests:
+      - length_check:
+          max_length: 40
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Title__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: Name
+      tests:
+      - not_null
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+  - name: rskcsp_ds_limit_curated
+    columns:
+    - name: CCS_Facility__c
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Is_this_a_Temporary_Amendment__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Tenor__c
+      tests:
+      - length_check:
+          max_length: 30
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: Name
+      tests:
+      - not_null
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+  - name: rskcsp_ds_entity_involvement_curated
+    columns:
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: LLC_BI__Account__c
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Borrower_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Contingent_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Loan__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Product_Package__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Migration_ID__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Name
+      tests:
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: RecordTypeId
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+  - name: rskcsp_ds_facility_curated
+    columns:
+    - name: CCS_50_of_Security_LV_from_Land_Property__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Account_a_Discounted_Account__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_AccountNumber__c
+      tests:
+      - length_check:
+          max_length: 8
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Amend_Margin__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Amend_Returned_Margin__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Apply_CRH__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Apply_Tranche_Drawdown__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Approval_Status__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Borrowing_Structure_Route__c
+      tests:
+      - not_null
+    - name: CCS_CardScheme__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_CCA__c
+      tests:
+      - not_null
+    - name: CCS_CFGICleanGrowthFinanceInitiative__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Change_Fixed_Rate_Duration__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Chosen_Rate__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Client_Choice_Rationale__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Commentary_on_Pricing__c
+      tests:
+      - length_check:
+          max_length: 32768
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_CRH_Monthly_or_Quarterly__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Customer_documentation_preference__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_DateOfMarketLinksAgreementKnown__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_DateOfTravelLinkAgreementKnown__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_DoNotTrade__c
+      tests:
+      - not_null
+    - name: CCS_Duration__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_e_Loan_Product_Selection__c
+      tests:
+      - length_check:
+          max_length: 4099
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Eligible_for_CRH__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Exception_Pricing_Request__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Exclude_from_Change__c
+      tests:
+      - not_null
+    - name: CCS_Exclude_from_Exposure_Value__c
+      tests:
+      - not_null
+    - name: CCS_Exposure_Value__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Final_Limit_or_Change_per_Step__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_FormFactor__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Frequency__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Front_Book_Back_Book__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Hard_Soft__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Heritage__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_How_much_to_pay_off_each_month__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Informed_Choice_Facility_Record__c
+      tests:
+      - not_null
+    - name: CCS_Interest_Rate_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Interest_Rate_Type_Greater50NonSplit__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Interest_Rate_Type_Greater50Split__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Interest_Rate_Type_split__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Is_this_a_Temporary_Amendment__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Is_this_Facility_LBCM__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Journey__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_LBCM_Facility_Validation__c
+      tests:
+      - not_null
+    - name: CCS_Limit_Indicator__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Limit_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Link__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Loan_Repayment_Profile__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Max_period_for_each_FX_contract__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_MoneyOutExtractionIntended__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_ODType__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Overdraft_Limit_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Overdraft_Request_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Partially_Amortising_Loan_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Pricing_Product__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Product_Approval_Rendering__c
+      tests:
+      - not_null
+    - name: CCS_Product_Rationale__c
+      tests:
+      - length_check:
+          max_length: 120000
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Provide_Comparative_quote__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Purpose__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Repayment_Frequency__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_RightOfWithdrawalConfirmed__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Sector__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Security__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Send_quote_to_client_before_sanction__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Set_up_a_direct_debit_to_manage__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_SetUpDisplayRatesActionProfiles__c
+      tests:
+      - not_null
+    - name: CCS_Signatory_1__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Signatory_2__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Signatory_3__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Signatory_4__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_SortCode__c
+      tests:
+      - length_check:
+          max_length: 6
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Specific_1_Period_End__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Specific_2_Period_End__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Step_Frequency__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Step_Option__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_SurroundServices__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_TenorRestriction__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Traded_Non_Traded__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_TrancheDrawdown__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_Utilisation_exceed_Current_Limit__c
+      tests:
+      - not_null
+    - name: CCS_Which_limits_apply_to_the_facility__c
+      tests:
+      - length_check:
+          max_length: 4099
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: LLC_BI__Account__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Credit_Memo__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Financed_Fee_Calculations__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Is_In_Review__c
+      tests:
+      - not_null
+    - name: LLC_BI__isRenewal__c
+      tests:
+      - not_null
+    - name: LLC_BI__lookupKey__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Product__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Product_Line__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Product_Package__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Product_Reference__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Product_Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Stage__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Status__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Migration_ID__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Name
+      tests:
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: OwnerId
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Primary_Source_of_Repayment__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: RecordTypeId
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Step_Frequency__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+  - name: rskcsp_ds_policy_exception_curated
+    columns:
+    - name: CCS_LBG_Entity__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CCS_LBG_Entity_Facility__c
+      tests:
+      - length_check:
+          max_length: 1300
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: LLC_BI__Automatically_Added__c
+      tests:
+      - not_null
+    - name: LLC_BI__Code__c
+      tests:
+      - length_check:
+          max_length: 50
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Collateral_Mgmt__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Covenant_Mgmt__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Loan__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Mitigation_Reason_1__c
+      tests:
+      - length_check:
+          max_length: 100
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Mitigation_Reason_2__c
+      tests:
+      - length_check:
+          max_length: 100
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Mitigation_Reason_3__c
+      tests:
+      - length_check:
+          max_length: 100
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Relationship__c
+      tests:
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Severity__c
+      tests:
+      - length_check:
+          max_length: 50
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Status__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Type__c
+      tests:
+      - not_null
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Name
+      tests:
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: OwnerId
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: RM_Mitigation_Comments__c
+      tests:
+      - length_check:
+          max_length: 32768
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+  - name: rskcsp_ds_policy_exception_mitigation_reason_curated
+    columns:
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: LLC_BI__Comment_Required__c
+      tests:
+      - not_null
+    - name: LLC_BI__lookupKey__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Policy_Exception_Template__c
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Reason__c
+      tests:
+      - not_null
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Name
+      tests:
+      - not_null
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+  - name: rskcsp_ds_policy_exception_template_curated
+    columns:
+    - name: CreatedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: CreatedDate
+      tests:
+      - not_null
+    - name: CurrencyIsoCode
+      tests:
+      - length_check:
+          max_length: 3
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Id
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedById
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LastModifiedDate
+      tests:
+      - not_null
+    - name: LLC_BI__Active__c
+      tests:
+      - not_null
+    - name: LLC_BI__Code__c
+      tests:
+      - length_check:
+          max_length: 50
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Description__c
+      tests:
+      - length_check:
+          max_length: 32768
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__lookupKey__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Severities__c
+      tests:
+      - length_check:
+          max_length: 4099
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: LLC_BI__Start_Date__c
+      tests:
+      - not_null
+    - name: LLC_BI__Type__c
+      tests:
+      - length_check:
+          max_length: 255
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: Name
+      tests:
+      - length_check:
+          max_length: 80
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
+    - name: OwnerId
+      tests:
+      - not_null
+      - length_check:
+          max_length: 18
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          column_type: String
