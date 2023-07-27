@@ -35,7 +35,7 @@ Follow the steps below to setup your environment:
 
 pip install pyyaml
 
-4. Save the Python script provided in your question to a file, e.g., `generate_dbt_tests.py`.
+4. Save the Python script provided in your question to a file, e.g., python source_test.py.
 
 5. You can now run the script using Python:
 
