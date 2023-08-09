@@ -1,5 +1,4 @@
-#/opt/homebrew/bin/python3 /Users/Ratna-Kumar.Dangeti/Documents/GitHub/csp_dbt_test_gen/Dbt_Tests_Gen/source_test.py  table.csv --database dmn01-rsksoi-bld-01-2017 --schema dmn01_rsksoi_euwe2_rsk_csp_ds_curation --source-name curation
-
+#/opt/homebrew/bin/python3 /Users/Ratna-Kumar.Dangeti/Documents/GitHub/csp_dbt_test_gen/Dbt_Tests_Gen/source_testcopy.py  table.csv --database dmn01-rsksoi-bld-01-2017 --schema dmn01_rsksoi_euwe2_rsk_csp_ds_curation --source-name curation
 import argparse
 import csv
 import yaml
@@ -49,17 +48,19 @@ def generate_dbt_tests(input_file, database, schema, source_name):
             column_tests = []
 
             if mandatory_check == 'N':  # Add 'not_null' test only for MandatoryCheck 'N'
-                column_tests.append('not_null')
+                column_tests.append({'not_null': {"name": f"Not Null Check for {column_name}"}})
 
             if datatype == 'STRING':
                 if size:
                     column_tests.append({
                         'length_check': {
+                            'name': f"Length Check for {column_name}",
                             'max_length': int(size)
                         }
                     })
                 column_tests.append({
                     'dbt_expectations.expect_column_values_to_be_of_type': {
+                        'name': f"Datatype Check for {column_name}",
                         'column_type': 'String'
                     }
                 })

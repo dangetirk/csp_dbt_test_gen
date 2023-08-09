@@ -2,18 +2,15 @@ version: 2
 sources:
 - name: curation
   database: dmn01-rsksoi-bld-01-2017
-  schema: dmn01_rsksoi_euwe2_rsk_csp_ds_curation
+  schema: dmn01_rsksoi_euwe2_rsk_csp_staging
   tables:
   - name: rskcsp_ds_debt_schedule_curated
     columns:
     - name: LLC_BI__Bundle__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Bundle__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Bundle__c
-          column_type: String
+          column_type: Integer
     - name: CreatedById
       tests:
       - length_check:
@@ -69,14 +66,6 @@ sources:
           max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Debt_Schedule_Description__c
-          column_type: String
-    - name: Name
-      tests:
-      - length_check:
-          name: Length Check for Name
-          max_length: 80
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
           column_type: String
     - name: LLC_BI__lookupKey__c
       tests:
@@ -248,14 +237,6 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Template__c
           column_type: String
-    - name: Name
-      tests:
-      - length_check:
-          name: Length Check for Name
-          max_length: 80
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
-          column_type: String
     - name: LLC_BI__Version__c
       tests:
       - length_check:
@@ -273,14 +254,6 @@ sources:
           max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Category__c
-          column_type: String
-    - name: Name
-      tests:
-      - length_check:
-          name: Length Check for Name
-          max_length: 80
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
           column_type: String
     - name: CreatedById
       tests:
@@ -444,14 +417,6 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Statement__c
           column_type: String
-    - name: Name
-      tests:
-      - length_check:
-          name: Length Check for Name
-          max_length: 80
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
-          column_type: String
     - name: LLC_BI__Total_Row_Name__c
       tests:
       - length_check:
@@ -598,14 +563,6 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Row__c
           column_type: String
-    - name: Name
-      tests:
-      - length_check:
-          name: Length Check for Name
-          max_length: 80
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
-          column_type: String
     - name: LLC_BI__Spread_Statement_Record_Total__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -686,11 +643,6 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Group__c
           column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
-          column_type: String
     - name: LLC_BI__Spread_Statement_Type__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -756,11 +708,6 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Spread_Statement_Record__c
           column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
-          column_type: String
   - name: rskcsp_ds_spread_record_classification_curated
     columns:
     - name: LLC_BI__Classification__c
@@ -800,11 +747,6 @@ sources:
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
-          column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
           column_type: String
     - name: LLC_BI__Spread_Statement_Record__c
       tests:
@@ -850,11 +792,6 @@ sources:
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
-          column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
           column_type: String
     - name: LLC_BI__Spread_Statement_Total_Group__c
       tests:
@@ -971,11 +908,6 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Spread_Projections_Template__c
           column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
-          column_type: String
     - name: LLC_BI__Spread_Statement_Type__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -1045,11 +977,6 @@ sources:
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for OwnerId
-          column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
           column_type: String
     - name: LLC_BI__Spread_Projections_Template__c
       tests:
@@ -1125,9 +1052,4 @@ sources:
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Purpose__c
-          column_type: String
-    - name: Name
-      tests:
-      - dbt_expectations.expect_column_values_to_be_of_type:
-          name: Datatype Check for Name
           column_type: String

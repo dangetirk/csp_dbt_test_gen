@@ -1,5 +1,5 @@
 table_name,column_name,datatype,size,MandatoryCheck,accepted_values
-rskcsp_ds_debt_schedule_curated,LLC_BI__Bundle__c,INTEGER,18,Y,"'GBP','AUD','USD'"
+rskcsp_ds_debt_schedule_curated,LLC_BI__Bundle__c,STRING,18,Y,"'GBP','AUD','USD'"
 rskcsp_ds_debt_schedule_curated,CreatedById,STRING,18,Y,
 rskcsp_ds_debt_schedule_curated,CreatedDate,DATETIME,,Y,
 rskcsp_ds_debt_schedule_curated,CurrencyIsoCode,STRING,3,Y,
