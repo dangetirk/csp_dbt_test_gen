@@ -49,34 +49,30 @@ def generate_dbt_tests(input_file, database, schema, source_name):
             if mandatory_check == 'N':  # Add 'not_null' test only for MandatoryCheck 'N'
                 column_tests.append({'not_null': {"name": f"Not Null Check for {column_name}"}})
 
-            if datatype == 'STRING':
-                if size:
-                    column_tests.append({
-                        'length_check': {
-                            'name': f"Length Check for {column_name}",
-                            'max_length': int(size)
-                        }
-                    })
-                column_tests.append({
-                    'dbt_expectations.expect_column_values_to_be_of_type': {
-                        'name': f"Datatype Check for {column_name}",
-                        'column_type': 'String'
-                    }
-                })
+            # Datatype checks based on BigQuery types
+            datatype_mapping = {
+                'STRING': 'String',
+                'BYTES': 'Bytes',
+                'INTEGER': 'Integer',
+                'INT64': 'Integer',
+                'FLOAT': 'Float',
+                'FLOAT64': 'Float',
+                'BOOLEAN': 'Boolean',
+                'BOOL': 'Boolean',
+                'TIMESTAMP': 'Timestamp',
+                'DATE': 'Date',
+                'TIME': 'Time',
+                'DATETIME': 'Datetime',
+                'ARRAY': 'Array',
+                'STRUCT': 'Struct',
+                'RECORD': 'Struct'
+            }
 
-            elif datatype == 'INTEGER':
+            if datatype in datatype_mapping:
                 column_tests.append({
                     'dbt_expectations.expect_column_values_to_be_of_type': {
                         'name': f"Datatype Check for {column_name}",
-                        'column_type': 'Integer'
-                    }
-                })
-
-            elif datatype == 'NUMERIC':
-                column_tests.append({
-                    'dbt_expectations.expect_column_values_to_be_of_type': {
-                        'name': f"Datatype Check for {column_name}",
-                        'column_type': 'Numeric'
+                        'column_type': datatype_mapping[datatype]
                     }
                 })
 

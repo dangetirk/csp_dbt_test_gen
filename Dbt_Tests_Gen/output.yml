@@ -13,17 +13,16 @@ sources:
           column_type: Integer
     - name: CreatedById
       tests:
-      - length_check:
-          name: Length Check for CreatedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
-      - length_check:
-          name: Length Check for CurrencyIsoCode
-          max_length: 3
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CurrencyIsoCode
           column_type: String
@@ -31,9 +30,6 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for Id
-      - length_check:
-          name: Length Check for Id
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
@@ -41,9 +37,6 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedById
-      - length_check:
-          name: Length Check for LastModifiedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LastModifiedById
           column_type: String
@@ -51,59 +44,61 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
+    - name: LLC_BI__Credit_Pull_Date__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Credit_Pull_Date__c
+          column_type: Date
     - name: LLC_BI__Debt_Filter_Syntax__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Debt_Filter_Syntax__c
-          max_length: 131072
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Debt_Filter_Syntax__c
           column_type: String
+    - name: LLC_BI__Debt_Schedule_Date__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Debt_Schedule_Date__c
+          column_type: Datetime
     - name: LLC_BI__Debt_Schedule_Description__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Debt_Schedule_Description__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Debt_Schedule_Description__c
           column_type: String
+    - name: LLC_BI__Is_Template__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Template__c
+          column_type: Boolean
+    - name: LLC_BI__Last_Updated__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Last_Updated__c
+          column_type: Date
     - name: LLC_BI__lookupKey__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__lookupKey__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
           column_type: String
     - name: OwnerId
       tests:
-      - length_check:
-          name: Length Check for OwnerId
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for OwnerId
           column_type: String
     - name: LLC_BI__Spread_Statement_Period__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Spread_Statement_Period__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Spread_Statement_Period__c
           column_type: String
     - name: LLC_BI__Relationship__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Relationship__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Relationship__c
           column_type: String
     - name: LLC_BI__Source_Debt_Schedule__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Source_Debt_Schedule__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Debt_Schedule__c
           column_type: String
@@ -111,41 +106,31 @@ sources:
     columns:
     - name: LLC_BI__Collateral__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Collateral__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Collateral__c
           column_type: String
     - name: CreatedById
       tests:
-      - length_check:
-          name: Length Check for CreatedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
-      - length_check:
-          name: Length Check for CurrencyIsoCode
-          max_length: 3
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CurrencyIsoCode
           column_type: String
     - name: LLC_BI__Description__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Description__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Description__c
           column_type: String
     - name: LLC_BI__Financial_Consolidation__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Financial_Consolidation__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Financial_Consolidation__c
           column_type: String
@@ -153,27 +138,33 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for Id
-      - length_check:
-          name: Length Check for Id
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
     - name: LLC_BI__Import_Data_Source__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Import_Data_Source__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Import_Data_Source__c
           column_type: String
+    - name: LLC_BI__Is_Consolidation__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Consolidation__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Disabled__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Disabled__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Template__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Template__c
+          column_type: Boolean
     - name: LastModifiedById
       tests:
       - not_null:
           name: Not Null Check for LastModifiedById
-      - length_check:
-          name: Length Check for LastModifiedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LastModifiedById
           column_type: String
@@ -181,67 +172,51 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__lookupKey__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
           column_type: String
     - name: LLC_BI__Migration_Target__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Migration_Target__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Migration_Target__c
           column_type: String
     - name: LLC_BI__Object_API_Name__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Object_API_Name__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Object_API_Name__c
           column_type: String
     - name: OwnerId
       tests:
-      - length_check:
-          name: Length Check for OwnerId
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for OwnerId
           column_type: String
     - name: LLC_BI__Relationship__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Relationship__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Relationship__c
           column_type: String
     - name: LLC_BI__Selected_Scale__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Selected_Scale__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Selected_Scale__c
           column_type: String
+    - name: LLC_BI__Show_Footnotes__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Show_Footnotes__c
+          column_type: Boolean
     - name: LLC_BI__Source_Template__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Source_Template__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Template__c
           column_type: String
     - name: LLC_BI__Version__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Version__c
-          max_length: 80
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Version__c
           column_type: String
@@ -249,25 +224,21 @@ sources:
     columns:
     - name: LLC_BI__Category__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Category__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Category__c
           column_type: String
     - name: CreatedById
       tests:
-      - length_check:
-          name: Length Check for CreatedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
-      - length_check:
-          name: Length Check for CurrencyIsoCode
-          max_length: 3
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CurrencyIsoCode
           column_type: String
@@ -275,9 +246,6 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for Id
-      - length_check:
-          name: Length Check for Id
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
@@ -285,9 +253,6 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedById
-      - length_check:
-          name: Length Check for LastModifiedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LastModifiedById
           column_type: String
@@ -295,97 +260,112 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__lookupKey__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
           column_type: String
     - name: OwnerId
       tests:
-      - length_check:
-          name: Length Check for OwnerId
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for OwnerId
           column_type: String
   - name: rskcsp_ds_spread_statement_template_curated
     columns:
+    - name: LLC_BI__Allow_Record_Filtering__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Allow_Record_Filtering__c
+          column_type: Boolean
+    - name: LLC_BI__Balance_Total__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Balance_Total__c
+          column_type: Boolean
     - name: LLC_BI__Bundle__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Bundle__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Bundle__c
           column_type: String
     - name: LLC_BI__Calc_Common_Sizing_Record__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Calc_Common_Sizing_Record__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Calc_Common_Sizing_Record__c
           column_type: String
     - name: LLC_BI__Calc_Common_Sizing_Total_Group__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Calc_Common_Sizing_Total_Group__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Calc_Common_Sizing_Total_Group__c
           column_type: String
     - name: CreatedById
       tests:
-      - length_check:
-          name: Length Check for CreatedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
-      - length_check:
-          name: Length Check for CurrencyIsoCode
-          max_length: 3
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CurrencyIsoCode
           column_type: String
     - name: LLC_BI__Description__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Description__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Description__c
           column_type: String
+    - name: LLC_BI__Display_Common_Sizing__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Display_Common_Sizing__c
+          column_type: Boolean
+    - name: LLC_BI__Display_Projection_Drivers__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Display_Projection_Drivers__c
+          column_type: Boolean
+    - name: LLC_BI__Display_Trend__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Display_Trend__c
+          column_type: Boolean
     - name: LLC_BI__Entity_Type__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Entity_Type__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Entity_Type__c
           column_type: String
+    - name: LLC_BI__Group_Columns__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Group_Columns__c
+          column_type: Boolean
     - name: Id
       tests:
       - not_null:
           name: Not Null Check for Id
-      - length_check:
-          name: Length Check for Id
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
+    - name: LLC_BI__Is_Multi_Currency__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Multi_Currency__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Template__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Template__c
+          column_type: Boolean
     - name: LastModifiedById
       tests:
       - not_null:
           name: Not Null Check for LastModifiedById
-      - length_check:
-          name: Length Check for LastModifiedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LastModifiedById
           column_type: String
@@ -393,43 +373,51 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__lookupKey__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
           column_type: String
     - name: OwnerId
       tests:
-      - length_check:
-          name: Length Check for OwnerId
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for OwnerId
           column_type: String
     - name: LLC_BI__Source_Statement__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Source_Statement__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Statement__c
           column_type: String
+    - name: LLC_BI__Static_Periods__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Static_Periods__c
+          column_type: Boolean
+    - name: LLC_BI__Supports_Common_Sizing__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Supports_Common_Sizing__c
+          column_type: Boolean
+    - name: LLC_BI__Supports_Trend__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Supports_Trend__c
+          column_type: Boolean
+    - name: LLC_BI__Total_Hide_Currency_Symbol__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Total_Hide_Currency_Symbol__c
+          column_type: Boolean
     - name: LLC_BI__Total_Row_Name__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Total_Row_Name__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Total_Row_Name__c
           column_type: String
     - name: LLC_BI__Type__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Type__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Type__c
           column_type: String
@@ -437,57 +425,46 @@ sources:
     columns:
     - name: LLC_BI__Associated_Parent_Record__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Associated_Parent_Record__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Associated_Parent_Record__c
           column_type: String
     - name: LLC_BI__Cloned_Source_Row__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Cloned_Source_Row__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Cloned_Source_Row__c
           column_type: String
     - name: CreatedById
       tests:
-      - length_check:
-          name: Length Check for CreatedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
-      - length_check:
-          name: Length Check for CurrencyIsoCode
-          max_length: 3
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CurrencyIsoCode
           column_type: String
+    - name: LLC_BI__Debit__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Debit__c
+          column_type: Boolean
     - name: LLC_BI__Display_Type__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Display_Type__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Display_Type__c
           column_type: String
     - name: LLC_BI__Formula_Long_Text__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Formula_Long_Text__c
-          max_length: 32768
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Formula_Long_Text__c
           column_type: String
     - name: LLC_BI__KPI_Type__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__KPI_Type__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__KPI_Type__c
           column_type: String
@@ -495,19 +472,23 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for Id
-      - length_check:
-          name: Length Check for Id
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
+    - name: LLC_BI__Include_In_Total__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Include_In_Total__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Linked__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Linked__c
+          column_type: Boolean
     - name: LastModifiedById
       tests:
       - not_null:
           name: Not Null Check for LastModifiedById
-      - length_check:
-          name: Length Check for LastModifiedById
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LastModifiedById
           column_type: String
@@ -515,51 +496,71 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__Linked_Spread_Statement_Record__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Linked_Spread_Statement_Record__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Linked_Spread_Statement_Record__c
           column_type: String
     - name: LLC_BI__Linked_Spread_Statement_Total_Group__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Linked_Spread_Statement_Total_Group__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Linked_Spread_Statement_Total_Group__c
           column_type: String
     - name: LLC_BI__lookupKey__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__lookupKey__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__lookupKey__c
           column_type: String
     - name: LLC_BI__Operation__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Operation__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Operation__c
           column_type: String
+    - name: LLC_BI__Operation_Add__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Operation_Add__c
+          column_type: Boolean
+    - name: LLC_BI__Operation_Divide__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Operation_Divide__c
+          column_type: Boolean
+    - name: LLC_BI__Operation_Multiply__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Operation_Multiply__c
+          column_type: Boolean
+    - name: LLC_BI__Operation_Subtract__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Operation_Subtract__c
+          column_type: Boolean
+    - name: LLC_BI__Period_Over_Period_Change__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Period_Over_Period_Change__c
+          column_type: Boolean
+    - name: LLC_BI__Period_Over_Prior_Fiscal_Year__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Period_Over_Prior_Fiscal_Year__c
+          column_type: Boolean
+    - name: LLC_BI__Prior_Fiscal_Year__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Prior_Fiscal_Year__c
+          column_type: Boolean
     - name: LLC_BI__Record_Type__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Record_Type__c
-          max_length: 255
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Record_Type__c
           column_type: String
     - name: LLC_BI__Source_Row__c
       tests:
-      - length_check:
-          name: Length Check for LLC_BI__Source_Row__c
-          max_length: 18
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Source_Row__c
           column_type: String
@@ -580,11 +581,21 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CurrencyIsoCode
           column_type: String
+    - name: LLC_BI__Debit__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Debit__c
+          column_type: Boolean
     - name: LLC_BI__Global_Analysis_Type__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -600,6 +611,16 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Group_Type__c
           column_type: String
+    - name: LLC_BI__Hide_All_Records__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Hide_All_Records__c
+          column_type: Boolean
+    - name: LLC_BI__Hide_Column_Totals__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Hide_Column_Totals__c
+          column_type: Boolean
     - name: LLC_BI__KPI_Type__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -612,6 +633,21 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
+    - name: LLC_BI__Include_In_Total__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Include_In_Total__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Balance_Check__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Balance_Check__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Summary_Group__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Summary_Group__c
+          column_type: Boolean
     - name: LastModifiedById
       tests:
       - not_null:
@@ -623,6 +659,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -638,6 +677,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Publish_On_Update_Event__c
           column_type: String
+    - name: LLC_BI__Show_Math__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Show_Math__c
+          column_type: Boolean
     - name: LLC_BI__Source_Group__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -665,6 +709,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -682,6 +731,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for Id
           column_type: String
+    - name: LLC_BI__Is_Linked__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Linked__c
+          column_type: Boolean
     - name: LastModifiedById
       tests:
       - not_null:
@@ -693,6 +747,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -720,6 +777,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -743,6 +805,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -765,6 +830,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -788,6 +858,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -815,6 +888,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -872,6 +950,26 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Initial_Interim_TTM_Period__c
           column_type: String
+    - name: LLC_BI__Is_Annual__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Annual__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Fiscal_Year__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Fiscal_Year__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Flex_Enabled_Debt_Schedule__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Flex_Enabled_Debt_Schedule__c
+          column_type: Boolean
+    - name: LLC_BI__Is_Global_Analysis_Year__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Is_Global_Analysis_Year__c
+          column_type: Boolean
     - name: LastModifiedById
       tests:
       - not_null:
@@ -883,6 +981,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__Period_Key__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -893,6 +994,16 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Project_from_Period__c
           column_type: String
+    - name: LLC_BI__Selected__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Selected__c
+          column_type: Boolean
+    - name: LLC_BI__Selected_In_Global__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Selected_In_Global__c
+          column_type: Boolean
     - name: LLC_BI__Source__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -913,11 +1024,21 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Spread_Statement_Type__c
           column_type: String
+    - name: LLC_BI__Statement_Date__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Statement_Date__c
+          column_type: Date
     - name: LLC_BI__Supplemental_Source__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Supplemental_Source__c
           column_type: String
+    - name: LLC_BI__Supplemental_Statement_Date__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Supplemental_Statement_Date__c
+          column_type: Date
     - name: LLC_BI__Trailing_Interim_TTM_Period__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -933,6 +1054,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for LLC_BI__Unmapped_Values__c
           column_type: String
+    - name: LLC_BI__Year_Hidden_In_Global__c
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LLC_BI__Year_Hidden_In_Global__c
+          column_type: Boolean
   - name: rskcsp_ds_spread_projections_driver_curated
     columns:
     - name: LLC_BI__Classification__c
@@ -945,6 +1071,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -968,6 +1099,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -1010,6 +1144,11 @@ sources:
       - dbt_expectations.expect_column_values_to_be_of_type:
           name: Datatype Check for CreatedById
           column_type: String
+    - name: CreatedDate
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for CreatedDate
+          column_type: Datetime
     - name: CurrencyIsoCode
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
@@ -1038,6 +1177,9 @@ sources:
       tests:
       - not_null:
           name: Not Null Check for LastModifiedDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastModifiedDate
+          column_type: Datetime
     - name: LLC_BI__lookupKey__c
       tests:
       - dbt_expectations.expect_column_values_to_be_of_type:
