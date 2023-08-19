@@ -1,0 +1,221 @@
+version: 2
+sources:
+- name: cov_curation
+  database: dmn01-rsksoi-bld-01-2017
+  schema: dmn01_rsksoi_euwe2_rsk_csp_curated
+  tables:
+  - name: cur_Covenant_Compliance
+    columns:
+    - name: ApprovalDate
+      tests:
+      - not_null:
+          name: Not Null Check for ApprovalDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for ApprovalDate
+          column_type: Timestamp
+    - name: AutomatedTestingStatus
+      tests:
+      - not_null:
+          name: Not Null Check for AutomatedTestingStatus
+    - name: Comments
+      tests:
+      - not_null:
+          name: Not Null Check for Comments
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Comments
+          column_type: String
+    - name: Denominator
+      tests:
+      - not_null:
+          name: Not Null Check for Denominator
+    - name: EffectiveDate
+      tests:
+      - not_null:
+          name: Not Null Check for EffectiveDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for EffectiveDate
+          column_type: Timestamp
+    - name: EvaluationDate
+      tests:
+      - not_null:
+          name: Not Null Check for EvaluationDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for EvaluationDate
+          column_type: Timestamp
+    - name: ExceptionDate
+      tests:
+      - not_null:
+          name: Not Null Check for ExceptionDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for ExceptionDate
+          column_type: Timestamp
+    - name: Frequency
+      tests:
+      - not_null:
+          name: Not Null Check for Frequency
+    - name: Numerator
+      tests:
+      - not_null:
+          name: Not Null Check for Numerator
+    - name: Outcome
+      tests:
+      - not_null:
+          name: Not Null Check for Outcome
+    - name: PeriodEnd
+      tests:
+      - not_null:
+          name: Not Null Check for PeriodEnd
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for PeriodEnd
+          column_type: Timestamp
+    - name: Status
+      tests:
+      - not_null:
+          name: Not Null Check for Status
+    - name: Value
+      tests:
+      - not_null:
+          name: Not Null Check for Value
+    - name: MigrationId
+      tests:
+      - not_null:
+          name: Not Null Check for MigrationId
+  - name: cur_Covenant_Management
+    columns:
+    - name: Account
+      tests:
+      - not_null:
+          name: Not Null Check for Account
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Account
+          column_type: String
+    - name: Active
+      tests:
+      - not_null:
+          name: Not Null Check for Active
+    - name: Comments
+      tests:
+      - not_null:
+          name: Not Null Check for Comments
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Comments
+          column_type: String
+    - name: CovenantType
+      tests:
+      - not_null:
+          name: Not Null Check for CovenantType
+    - name: Detail
+      tests:
+      - not_null:
+          name: Not Null Check for Detail
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Detail
+          column_type: String
+    - name: EffectiveDate
+      tests:
+      - not_null:
+          name: Not Null Check for EffectiveDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for EffectiveDate
+          column_type: Timestamp
+    - name: IntegrationSource
+      tests:
+      - not_null:
+          name: Not Null Check for IntegrationSource
+    - name: LastEvaluationDate
+      tests:
+      - not_null:
+          name: Not Null Check for LastEvaluationDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for LastEvaluationDate
+          column_type: Timestamp
+    - name: lookupKey
+      tests:
+      - not_null:
+          name: Not Null Check for lookupKey
+    - name: Measure
+      tests:
+      - not_null:
+          name: Not Null Check for Measure
+    - name: MigrationID
+      tests:
+      - not_null:
+          name: Not Null Check for MigrationID
+    - name: NextEvaluationDate
+      tests:
+      - not_null:
+          name: Not Null Check for NextEvaluationDate
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for NextEvaluationDate
+          column_type: Timestamp
+    - name: Notes
+      tests:
+      - not_null:
+          name: Not Null Check for Notes
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Notes
+          column_type: String
+    - name: PeriodEnd
+      tests:
+      - not_null:
+          name: Not Null Check for PeriodEnd
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for PeriodEnd
+          column_type: Timestamp
+    - name: Relationship
+      tests:
+      - not_null:
+          name: Not Null Check for Relationship
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Relationship
+          column_type: String
+    - name: TestedAgainst
+      tests:
+      - not_null:
+          name: Not Null Check for TestedAgainst
+    - name: State
+      tests:
+      - not_null:
+          name: Not Null Check for State
+    - name: TestStatus
+      tests:
+      - not_null:
+          name: Not Null Check for TestStatus
+    - name: Value
+      tests:
+      - not_null:
+          name: Not Null Check for Value
+    - name: Status
+      tests:
+      - not_null:
+          name: Not Null Check for Status
+    - name: Definition
+      tests:
+      - not_null:
+          name: Not Null Check for Definition
+    - name: EntityTested
+      tests:
+      - not_null:
+          name: Not Null Check for EntityTested
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for EntityTested
+          column_type: String
+    - name: FacilitySAA
+      tests:
+      - not_null:
+          name: Not Null Check for FacilitySAA
+    - name: PerformanceCovenantsCommentary
+      tests:
+      - not_null:
+          name: Not Null Check for PerformanceCovenantsCommentary
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for PerformanceCovenantsCommentary
+          column_type: String
+    - name: CovenantMgmt
+      tests:
+      - not_null:
+          name: Not Null Check for CovenantMgmt
+    - name: Unit
+      tests:
+      - not_null:
+          name: Not Null Check for Unit

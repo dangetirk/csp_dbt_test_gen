@@ -3,7 +3,6 @@ import csv
 import yaml
 
 def generate_dbt_tests(input_file, database, schema, source_name):
-    # Default column mappings
     default_table_column_map = {
         'table_name': 0,
         'column_name': 1,
@@ -26,18 +25,17 @@ def generate_dbt_tests(input_file, database, schema, source_name):
 
     with open(input_file, 'r') as file:
         reader = csv.reader(file)
-        headers = next(reader)  # Read the header row to get column positions
+        headers = next(reader)
 
         tables = {}
 
         for row in reader:
-            # Get column values using default column mappings
             table_name = row[default_table_column_map['table_name']]
             column_name = row[default_table_column_map['column_name']]
             datatype = row[default_table_column_map['datatype']]
             size = row[default_table_column_map['size']]
             mandatory_check = row[default_table_column_map['mandatory_check']]
-            
+
             if table_name not in tables:
                 tables[table_name] = {
                     'name': table_name,
@@ -46,26 +44,14 @@ def generate_dbt_tests(input_file, database, schema, source_name):
 
             column_tests = []
 
-            if mandatory_check == 'N':  # Add 'not_null' test only for MandatoryCheck 'N'
+            if mandatory_check == 'N':
                 column_tests.append({'not_null': {"name": f"Not Null Check for {column_name}"}})
 
-            # Datatype checks based on BigQuery types
             datatype_mapping = {
                 'STRING': 'String',
                 'BYTES': 'Bytes',
                 'INTEGER': 'Integer',
-                'INT64': 'Integer',
-                'FLOAT': 'Float',
-                'FLOAT64': 'Float',
-                'BOOLEAN': 'Boolean',
-                'BOOL': 'Boolean',
-                'TIMESTAMP': 'Timestamp',
-                'DATE': 'Date',
-                'TIME': 'Time',
-                'DATETIME': 'Datetime',
-                'ARRAY': 'Array',
-                'STRUCT': 'Struct',
-                'RECORD': 'Struct'
+                # Add more datatype mappings as needed
             }
 
             if datatype in datatype_mapping:
@@ -75,6 +61,14 @@ def generate_dbt_tests(input_file, database, schema, source_name):
                         'column_type': datatype_mapping[datatype]
                     }
                 })
+
+                if datatype == 'STRING' and size:
+                    column_tests.append({
+                        'length_check': {
+                            'name': f"Length Check for {column_name}",
+                            'max_length': int(size)
+                        }
+                    })
 
             if column_tests:
                 tables[table_name]['columns'].append({
