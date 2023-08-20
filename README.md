@@ -6,7 +6,7 @@ This script generates tests YAML files based on CSV input files. It's designed t
 ## Getting Started
 
 1. Clone the repository:
-   git clone https://github.com/your-username/dbt-test-generator.git
+   git clone https://github.com/your-username/dbt-test-generator.git](https://github.com/dangetirk/csp_dbt_test_gen.git
 
 2. Place your CSV input files in the `Input` folder. The CSV files should follow the format:
    table_name,column_name,datatype,size,mandatory_check,accepted_values
