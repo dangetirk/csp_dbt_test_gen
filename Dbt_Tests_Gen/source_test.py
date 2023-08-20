@@ -49,8 +49,8 @@ def generate_dbt_tests(input_file, database, schema, source_name):
 
             column_tests = []
 
-            if mandatory_check == 'yes':
-                column_tests.append({'not_null': {"name": f"Not Null Check for {column_name}"}})
+            if mandatory_check.lower() == 'yes':
+                column_tests.append({'not_null': {"name": f"Non-Null Check for {column_name}"}})
 
             datatype_mapping = {
                 'STRING': 'String',
@@ -108,9 +108,11 @@ def main():
 
     output = generate_dbt_tests(input_file, database, schema, source_name)
 
-    output_file = 'output.yml'
+    output_file = f'{source_name.lower()}_dbt_tests.yml'
     with open(output_file, 'w') as file:
         yaml.dump(output, file, default_flow_style=False, sort_keys=False)
+
+    print(f"Generated DBT tests YAML file: {output_file}")
 
 if __name__ == "__main__":
     main()

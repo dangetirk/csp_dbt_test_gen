@@ -1,0 +1,41 @@
+version: 2
+sources:
+- name: curation
+  database: dmn01-rsksoi-bld-01-2017
+  schema: dmn01_rsksoi_euwe2_rsk_csp_ds_curation
+  tables:
+  - name: rskcsp_ds_account_curated
+    columns:
+    - name: Id
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Id
+          column_type: String
+      - length_check:
+          name: Length Check for Id
+          max_length: 18
+      - accepted_values:
+          name: Accepted Values Check for Id
+          values:
+          - KING
+          - RATNA
+          - KUMAR
+          - SUNNY
+    - name: Name
+      tests:
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Name
+          column_type: String
+      - length_check:
+          name: Length Check for Name
+          max_length: 255
+    - name: Type
+      tests:
+      - not_null:
+          name: Non-Null Check for Type
+      - dbt_expectations.expect_column_values_to_be_of_type:
+          name: Datatype Check for Type
+          column_type: String
+      - length_check:
+          name: Length Check for Type
+          max_length: 255
