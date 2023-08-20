@@ -1,6 +1,8 @@
+#python3 source_test.py  Orgs_table.csv --database dmn01-rsksoi-bld-01-2017 --schema dmn01_rsksoi_euwe2_rsk_csp_ds_curation --source-name curation
 import argparse
 import csv
 import yaml
+import ast
 
 def generate_dbt_tests(input_file, database, schema, source_name):
     default_table_column_map = {
@@ -8,7 +10,8 @@ def generate_dbt_tests(input_file, database, schema, source_name):
         'column_name': 1,
         'datatype': 2,
         'size': 3,
-        'mandatory_check': 4
+        'mandatory_check': 4,
+        'accepted_values': 5
     }
 
     dbt_tests = {
@@ -35,6 +38,8 @@ def generate_dbt_tests(input_file, database, schema, source_name):
             datatype = row[default_table_column_map['datatype']]
             size = row[default_table_column_map['size']]
             mandatory_check = row[default_table_column_map['mandatory_check']]
+            accepted_values_str = row[default_table_column_map['accepted_values']]
+            accepted_values = ast.literal_eval(accepted_values_str) if accepted_values_str.strip() else []
 
             if table_name not in tables:
                 tables[table_name] = {
@@ -44,8 +49,8 @@ def generate_dbt_tests(input_file, database, schema, source_name):
 
             column_tests = []
 
-            if mandatory_check == 'N':
-                column_tests.append({'not_null': {"name": f"Not Null Check for {column_name}"}})
+            if mandatory_check.lower() == 'yes':
+                column_tests.append({'not_null': {"name": f"Non-Null Check for {column_name}"}})
 
             datatype_mapping = {
                 'STRING': 'String',
@@ -69,6 +74,14 @@ def generate_dbt_tests(input_file, database, schema, source_name):
                             'max_length': int(size)
                         }
                     })
+
+            if accepted_values:
+                column_tests.append({
+                    'accepted_values': {
+                        'name': f"Accepted Values Check for {column_name}",
+                        'values': accepted_values
+                    }
+                })
 
             if column_tests:
                 tables[table_name]['columns'].append({
@@ -95,9 +108,11 @@ def main():
 
     output = generate_dbt_tests(input_file, database, schema, source_name)
 
-    output_file = 'output.yml'
+    output_file = f'{source_name.lower()}_dbt_tests.yml'
     with open(output_file, 'w') as file:
-        yaml.dump(output, file, sort_keys=False)
+        yaml.dump(output, file, default_flow_style=False, sort_keys=False)
+
+    print(f"Generated DBT tests YAML file: {output_file}")
 
 if __name__ == "__main__":
     main()

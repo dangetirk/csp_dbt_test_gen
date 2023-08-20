@@ -1,6 +1,7 @@
-#python3 source_test.py  Orgs_table.csv --database dmn01-rsksoi-bld-01-2017 --schema dmn01_rsksoi_euwe2_rsk_csp_ds_curation --source-name curation
+#python3 source_test.py  
 import argparse
 import csv
+import os
 import yaml
 import ast
 
@@ -93,26 +94,42 @@ def generate_dbt_tests(input_file, database, schema, source_name):
 
     return dbt_tests
 
+import argparse
+import csv
+import os
+import yaml
+import ast
+
+# ... (rest of the code remains the same)
+
 def main():
-    parser = argparse.ArgumentParser(description="Generate dbt tests from CSV input file.")
-    parser.add_argument("input_file", help="Path to the input CSV file.")
-    parser.add_argument("--database", required=True, help="Database name.")
-    parser.add_argument("--schema", required=True, help="Schema name.")
-    parser.add_argument("--source-name", required=True, help="Source name.")
+    parser = argparse.ArgumentParser(description="Generate dbt tests from CSV input files in a folder.")
+    # parser.add_argument("--database", required=True, help="Database name.")
+    # parser.add_argument("--schema", required=True, help="Schema name.")
+    # parser.add_argument("--source-name", required=True, help="Source name.")
     args = parser.parse_args()
 
-    input_file = args.input_file
-    database = args.database
-    schema = args.schema
-    source_name = args.source_name
+    input_folder = "Input"  # Specify your input folder path here
+    database = "dmn01-rsksoi-bld-01-2017"  # Hardcoded database value
+    schema = "dmn01_rsksoi_euwe2_rsk_csp_ds_curation"  # Hardcoded schema value
+    source_name = "curation"  # Hardcoded source name value
 
-    output = generate_dbt_tests(input_file, database, schema, source_name)
+    output_folder = "output"  # Specify your desired output folder here
 
-    output_file = f'{source_name.lower()}_dbt_tests.yml'
-    with open(output_file, 'w') as file:
-        yaml.dump(output, file, default_flow_style=False, sort_keys=False)
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
 
-    print(f"Generated DBT tests YAML file: {output_file}")
+    for filename in os.listdir(input_folder):
+        if filename.endswith(".csv"):
+            input_file = os.path.join(input_folder, filename)
+            output = generate_dbt_tests(input_file, database, schema, source_name)
+
+            output_file = os.path.join(output_folder, f'{source_name.lower()}_{os.path.splitext(filename)[0]}_dbt_tests.yml')
+            with open(output_file, 'w') as file:
+                yaml.dump(output, file, default_flow_style=False, sort_keys=False)
+
+            print(f"Generated DBT tests YAML file: {output_file}")
 
 if __name__ == "__main__":
     main()
+

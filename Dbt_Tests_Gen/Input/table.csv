@@ -1,0 +1,4 @@
+table_name,column_name,datatype,size,mandatory_check,accepted_values
+rskcsp_ds_account_curated,Id,STRING,18,no,
+rskcsp_ds_account_curated,Name,STRING,255,no,
+rskcsp_ds_account_curated,Type,STRING,255,yes,
