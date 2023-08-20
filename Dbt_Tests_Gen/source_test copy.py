@@ -1,9 +1,11 @@
+#python3 source_test.py  
+import argparse
+import csv
 import os
 import yaml
-import csv
 import ast
 
-def generate_dbt_tests(input_file, source_name):
+def generate_dbt_tests(input_file, database, schema, source_name):
     default_table_column_map = {
         'table_name': 0,
         'column_name': 1,
@@ -18,8 +20,8 @@ def generate_dbt_tests(input_file, source_name):
         'sources': [
             {
                 'name': source_name,
-                'database': 'dmn01-rsksoi-bld-01-2017',
-                'schema': 'dmn01_rsksoi_euwe2_rsk_csp_ds_curation',
+                'database': database,
+                'schema': schema,
                 'tables': []
             }
         ]
@@ -92,8 +94,26 @@ def generate_dbt_tests(input_file, source_name):
 
     return dbt_tests
 
+import argparse
+import csv
+import os
+import yaml
+import ast
+
+# ... (rest of the code remains the same)
+
 def main():
+    parser = argparse.ArgumentParser(description="Generate dbt tests from CSV input files in a folder.")
+    # parser.add_argument("--database", required=True, help="Database name.")
+    # parser.add_argument("--schema", required=True, help="Schema name.")
+    # parser.add_argument("--source-name", required=True, help="Source name.")
+    args = parser.parse_args()
+
     input_folder = "Input"  # Specify your input folder path here
+    database = "dmn01-rsksoi-bld-01-2017"  # Hardcoded database value
+    schema = "dmn01_rsksoi_euwe2_rsk_csp_ds_curation"  # Hardcoded schema value
+    source_name = "curation"  # Hardcoded source name value
+
     output_folder = "output"  # Specify your desired output folder here
 
     if not os.path.exists(output_folder):
@@ -101,9 +121,8 @@ def main():
 
     for filename in os.listdir(input_folder):
         if filename.endswith(".csv"):
-            source_name = os.path.splitext(filename)[0]
             input_file = os.path.join(input_folder, filename)
-            output = generate_dbt_tests(input_file, source_name)
+            output = generate_dbt_tests(input_file, database, schema, source_name)
 
             output_file = os.path.join(output_folder, f'{source_name.lower()}_{os.path.splitext(filename)[0]}_dbt_tests.yml')
             with open(output_file, 'w') as file:
@@ -113,3 +132,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
