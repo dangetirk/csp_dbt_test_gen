@@ -20,6 +20,9 @@ This script generates tests YAML files based on CSV input files. It's designed t
 
 - Python 3.x
 
+  Required packages:
+- pip install pyyaml argparse
+
 ## Usage
 
 1. Edit the `source_test.py` script if needed:
